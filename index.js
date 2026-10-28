@@ -18,6 +18,15 @@ const sql = mysql2.createPool({
 app.get("/", (request, response) => {
 
     const comandoSelect = "SELECT * FROM musicas_gustavovillarroel"
+
+    sql.query(comandoSelect, (error, data) => {
+        if (error) {
+            console.log (error)
+
+            return
+        }
+        response.json(data)
+     })
  })
 
 app.listen(3000, () => {
